@@ -1,0 +1,12 @@
+{
+  "name": "internship/module-declarative-schema",
+  "description": "Magento 2 module for working with DB - declarative schema part.",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "Internship\\ModuleDeclarativeSchema\\": ""
+    }
+  }
+}
