@@ -1,8 +1,8 @@
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
-    <table name="declarative_schema" engine="innodb" resource="default" comment="Test Table">
+    <table name="department" engine="innodb" resource="default" onCreate="migrateFromAnotherTable(declarative_schema)" comment="Department Table">
         <column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Entity Id"/>
-        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Name"/>
+        <column xsi:type="varchar" name="depart_name" length="255" nullable="false" onCreate="migrateDataFrom(name)" comment="Department Name"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
