@@ -1,0 +1,10 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="declarative_schema" engine="innodb" resource="default" comment="Test Table">
+        <column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Entity Id"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>
