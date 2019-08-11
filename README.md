@@ -31,3 +31,33 @@ _In dry run mode, the database state does not change._
 
 `php bin/magento setup:upgrade --keep-generated`
  
+**Patches** 
+- are saved in **patch_list** table, after execution
+- Data Patches MUST implement DataPatchInterface
+- for DB instructions is used the ModuleSetupInterface
+- commands for execute data patches:
+    - `php bin/magento setup:upgrade`
+    - `php bin/magento setup:db-data:upgrade`
+- Schema Patches MUST implement SchemaPatchInterface
+- commands for execute schema patches:
+    - `php bin/magento setup:upgrade`
+    - `php bin/magento setup:db-schema:upgrade`
+    
+**Destructive DB operations**
+- delete a table or column
+- reduce column length
+- changing a decimal or float column precision
+- changing column types
+
+When **safe mode** is enabled, Magento creates a CSV file each time a destructive operation for a table or column occurs.
+This files can be found at the following locations:
+- project_root/var/declarative_dump_csv/{column_name_column_type_other_dimensions}.csv
+- project_root/var/declarative_dump_csv/{table_name}.csv
+
+**Safe mode**
+
+`php bin/magento setup:upgrade --safe-mode=1`
+
+**Restore changes made under safe mode**
+
+`php bin/magento setup:upgrade --data-restore=1`
