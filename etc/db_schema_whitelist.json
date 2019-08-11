@@ -7,5 +7,32 @@
         "constraint": {
             "PRIMARY": true
         }
+    },
+    "department": {
+        "column": {
+            "id": true,
+            "depart_name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "employee": {
+        "column": {
+            "id": true,
+            "employee_email": true,
+            "first_name": true,
+            "last_name": true,
+            "hired_at": true,
+            "department_id": true
+        },
+        "index": {
+            "EMPLOYEE_DEPARTMENT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "EMPLOYEE_EMPLOYEE_EMAIL": true,
+            "EMPLOYEE_DEPARTMENT_ID_DEPARTMENT_ID": true
+        }
     }
 }
