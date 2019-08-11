@@ -1,0 +1,11 @@
+{
+    "declarative_schema": {
+        "column": {
+            "id": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
