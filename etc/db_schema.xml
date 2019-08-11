@@ -7,4 +7,25 @@
             <column name="id"/>
         </constraint>
     </table>
+    <table name="employee" engine="innodb" resource="default" comment="Employee Table">
+        <column xsi:type="int" name="id" padding="10" identity="true" unsigned="true" nullable="false" comment="Employee ID"/>
+        <column xsi:type="varchar" name="employee_email" length="255" comment="Employee Email"/>
+        <column xsi:type="varchar" name="first_name" length="255" nullable="false" comment="Employee First Name"/>
+        <column xsi:type="varchar" name="last_name" length="255" nullable="false" comment="Employee Last Name"/>
+        <column xsi:type="varchar" name="hired_at" default="CURRENT_TIMESTAMP" nullable="false" comment="Employee Hire Date"/>
+        <column xsi:type="int" name="department_id" padding="10" unsigned="true" nullable="false" comment="Department ID"/>
+
+        <constraint xsi:type="primary" referenceId="EMPLOYEE_PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="EMPLOYEE_EMAIL">
+            <column name="employee_email"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="DEPARTMENTS_IDS" table="employee" column="department_id"
+                    referenceTable="department" referenceColumn="id" onDelete="CASCADE"/>
+
+        <index referenceId="INDEX_DEPARTMENT_ID" indexType="btree">
+            <column name="department_id"/>
+        </index>
+    </table>
 </schema>
